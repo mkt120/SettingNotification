@@ -5,12 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.NotificationCompat
-import com.mkt120.settingnotification.Const
 import com.mkt120.settingnotification.R
+import com.mkt120.settingnotification.top.appList.AppListActivity
 import com.mkt120.settingnotification.util.NotificationUtil
 
 class MainActivity : AppCompatActivity() {
@@ -99,6 +98,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        // アプリ一覧
+        findViewById<View>(R.id.button_app_list).setOnClickListener {
+            startActivity(Intent(applicationContext, AppListActivity::class.java))
+        }
     }
 
     private fun showDateSettingNotification() {
@@ -106,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             this,
             0,
             Intent(Settings.ACTION_DATE_SETTINGS),
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         NotificationUtil.showNotification(
             this,
@@ -130,7 +134,7 @@ class MainActivity : AppCompatActivity() {
             this,
             0,
             Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS),
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         NotificationUtil.showNotification(
             this,
@@ -150,11 +154,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun showDeviceInfoNotification() {
         val pendingIntent = PendingIntent.getActivity(
-                this,
-                0,
-                Intent(Settings.ACTION_DEVICE_INFO_SETTINGS),
-                PendingIntent.FLAG_UPDATE_CURRENT
-            )
+            this,
+            0,
+            Intent(Settings.ACTION_DEVICE_INFO_SETTINGS),
+            PendingIntent.FLAG_IMMUTABLE
+        )
         NotificationUtil.showNotification(
             this,
             titleResId = R.string.device_info_setting,
@@ -176,7 +180,7 @@ class MainActivity : AppCompatActivity() {
             this,
             0,
             Intent(Settings.ACTION_DISPLAY_SETTINGS),
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         NotificationUtil.showNotification(
             this,
@@ -199,7 +203,7 @@ class MainActivity : AppCompatActivity() {
             this,
             0,
             Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS),
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         NotificationUtil.showNotification(
             this,
@@ -222,7 +226,7 @@ class MainActivity : AppCompatActivity() {
             this,
             0,
             Intent(Settings.ACTION_SETTINGS),
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         NotificationUtil.showNotification(
             this,

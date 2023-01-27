@@ -1,1 +1,3 @@
-# settingapplication
+# SettingApplication
+
+通知領域から設定画面に直接遷移するためのNotificationを表示するアプリです。

@@ -2,7 +2,7 @@
     <string name="app_name">SettingNotification</string>
     <string name="device_date_setting">時刻設定</string>
     <string name="device_info_setting">端末について</string>
-    <string name="device_display_setting">画面設定</string>
+    <string name="device_display_setting">ディスプレイ設定</string>
     <string name="device_setting">設定画面</string>
     <string name="development_setting">開発者向けオプション</string>
     <string name="battery_save_setting">バッテリーセーバー設定</string>

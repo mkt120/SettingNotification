@@ -1,21 +1,23 @@
 package com.mkt120.settingnotification
 
 import android.app.Application
-import android.app.NotificationChannel
 import android.app.NotificationManager
-import androidx.core.app.NotificationManagerCompat
+import android.os.Build
+import com.mkt120.settingnotification.util.NotificationUtil
 
 class SettingNotificationApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        val channel = NotificationChannel(
-            Const.NOTIFICATION_CHANNEL_ID,
-            getString(R.string.notification_channel_name),
-            NotificationManager.IMPORTANCE_DEFAULT
-        )
-        val notificationManager = NotificationManagerCompat.from(this)
-        notificationManager.createNotificationChannel(channel)
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            NotificationUtil.createChannel(
+                this,
+                Const.NOTIFICATION_CHANNEL_ID,
+                getString(R.string.notification_channel_name),
+                "",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+        }
     }
 }

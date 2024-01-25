@@ -1,12 +1,12 @@
-package com.mkt120.settingnotification.top.appList
+package com.mkt120.settingnotification.view.appList
 
-import android.content.ComponentName
+import android.content.pm.ResolveInfo
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class AppListAdapter(
     private val list: List<AppData>,
-    private val onClick: (componentName: ComponentName) -> Unit
+    private val onClick: (String, ResolveInfo) -> Unit
 ) :
     RecyclerView.Adapter<AppViewHolder>() {
 
@@ -18,12 +18,7 @@ class AppListAdapter(
         holder: AppViewHolder,
         position: Int,
     ) {
-        holder.bind(
-            list[position].componentName,
-            list[position].appName,
-            list[position].icon,
-            onClick
-        )
+        holder.bind(appData = list[position], onClick = onClick)
     }
 
     override fun getItemCount(): Int = list.size
